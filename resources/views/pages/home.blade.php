@@ -18,4 +18,15 @@
 
     </section><!-- /Hero Section -->
 
+   {{-- about section start --}}
+   @include('component.about')
+   {{-- about section end --}}
+
+   {{-- skill section start --}}
+   @include('component.skill')
+   {{-- skill section end --}}
+
+   {{-- contact section start --}}
+   @include('component.contact')
+   {{-- contact section end --}}
 @endsection

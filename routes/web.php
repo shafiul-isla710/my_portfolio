@@ -9,3 +9,6 @@ Route::get('/', function () {
 
 Route::get('/',[PageController::class, 'homePage'])->name('home-page');
 Route::get('/about',[PageController::class, 'aboutPage'])->name('about-page');
+Route::get('/service',[PageController::class, 'servicePage'])->name('service-page');
+Route::get('/resume',[PageController::class, 'resumePage'])->name('resume-page');
+Route::get('/contact',[PageController::class, 'contactPage'])->name('contact-page');
