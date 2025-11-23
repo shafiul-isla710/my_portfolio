@@ -25,6 +25,8 @@
     <!-- Main CSS File -->
     <link href="{{ asset('assets/css/main.css') }} " rel="stylesheet">
 
+    @stack('style')
+
 </head>
 <body>
 
@@ -52,6 +54,7 @@
   <script src="{{ asset('assets/vendor/isotope-layout/isotope.pkgd.min.js') }} "></script>
 
   <!-- Main JS File -->
+  @stack('script')
   <script src="{{ asset('assets/js/main.js') }} "></script>
 </body>
 </html>
