@@ -52,12 +52,11 @@
           <a href="#" class="nav-link text-white">Home</a>
         </li>
         <li>
-          <a href="#productSubmenu" data-bs-toggle="collapse" class="nav-link text-white">Product</a>
+          <a href="#productSubmenu" data-bs-toggle="collapse" class="nav-link text-white">Slider</a>
           <div class="collapse" id="productSubmenu">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <li><a href="#" class="nav-link text-white ps-4">Show Product</a></li>
+              <li><a href="{{ route('slider.index') }}" class="nav-link text-white ps-4">Show Product</a></li>
               <li><a href="#" class="nav-link text-white ps-4">Create Product</a></li>
-              <li><a href="#" class="nav-link text-white ps-4">Product Reports</a></li>
             </ul>
           </div>
         </li>

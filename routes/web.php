@@ -1,11 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\AuthMiddleware;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Middleware\AuthMiddleware;
+use App\Http\Controllers\Admin\SliderController;
 
 /**
  * Authenticated Admin Routes
@@ -22,5 +23,13 @@ Route::get('/service',[PageController::class, 'servicePage'])->name('service-pag
 Route::get('/resume',[PageController::class, 'resumePage'])->name('resume-page');
 Route::get('/contact',[PageController::class, 'contactPage'])->name('contact-page');
 
-//Dashboard Route
-Route::get('/dashboard',[DashboardController::class, 'dashboardPage'])->name('dashboard')->middleware(AuthMiddleware::class);
+
+Route::middleware(AuthMiddleware::class)->group(function (){
+    //Dashboard Route
+    Route::get('/dashboard',[DashboardController::class, 'dashboardPage'])->name('dashboard');
+
+    //slider Routes
+    // Route::get('/slider/index',[SliderController::class, 'index'])->name('slider.index');
+    Route::resource('/slider', SliderController::class)->names('slider');
+
+});
