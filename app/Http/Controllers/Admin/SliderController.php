@@ -63,7 +63,8 @@ class SliderController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $slider = Slider::findOrFail($id);
+        return view('admin.slider.edit', compact('slider'));
     }
 
     /**
@@ -71,7 +72,28 @@ class SliderController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'title' => 'nullable|string|max:255',
+            'short_desc' => 'nullable|string|max:255',
+        ]);
+
+        $slider = Slider::findOrFail($id);
+
+        if($request->hasFile('image')){
+              // Delete old image
+              Storage::disk('public')->delete($slider->image);
+              $path = $request->file('image')->store('sliders','public' );
+              $slider->image = $path;
+        }
+        $slider->title = $request->title;
+        $slider->short_desc = $request->short_desc;
+        if($request->has('status')){
+            $slider->status = $request->status;
+        }
+        $slider->save();
+
+        return redirect()->route('slider.index')->with('success', 'Slider updated successfully.');
     }
 
     /**
@@ -79,6 +101,9 @@ class SliderController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $slider = Slider::findOrFail($id);
+        Storage::disk('public')->delete($slider->image);
+        $slider->delete();
+        return redirect()->route('slider.index')->with('success', 'Slider deleted successfully.');
     }
 }

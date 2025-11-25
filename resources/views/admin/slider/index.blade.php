@@ -22,12 +22,20 @@
         </div>
 
          <table class="table table-striped">
+            <div>
+                @if(session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+            </div>
             <thead>
                 <tr>
                     <th scope="col">Image</th>
                     <th scope="col">Title</th>
                     <th scope="col">Description</th>
                     <th scope="col">Status</th>
+                    <th scope="col">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -45,6 +53,16 @@
                         @else
                             <span class="badge bg-secondary">Inactive</span>
                         @endif
+                    </td>
+                    <td>
+                        <div>
+                            <a class="btn btn-primary btn-sm" href="{{ route('slider.edit', $slider->id) }}">Edit</a>
+                            <form action="{{ route('slider.destroy', $slider->id) }}" method="POST" style="display: inline-block;">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this slider?')">Delete</button>
+                            </form>
+                        </div>
                     </td>
                 </tr>
                @endforeach
