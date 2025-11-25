@@ -41,6 +41,11 @@ class AdminController extends Controller
 
     public function logout(Request $request)
     {
+        $user_id = session('user_id');
+
+        $otp = new Otp();
+        $otp->where('user_id', $user_id)->delete();
+
         $request->session()->flush();
         return redirect()->route('home-page')->with('success', 'Logged out successfully.');
     }

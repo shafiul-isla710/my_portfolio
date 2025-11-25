@@ -24,6 +24,3 @@ Route::get('/contact',[PageController::class, 'contactPage'])->name('contact-pag
 
 //Dashboard Route
 Route::get('/dashboard',[DashboardController::class, 'dashboardPage'])->name('dashboard')->middleware(AuthMiddleware::class);
-
-
-
