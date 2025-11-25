@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Slider;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -9,7 +10,8 @@ class PageController extends Controller
     //home page
     public function homePage()
     {
-        return view('pages.home');
+        $slider = Slider::active()->first();
+        return view('pages.home', compact('slider'));
     }
 
     //about page
