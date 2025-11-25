@@ -34,6 +34,8 @@
       background-color: #6c757d;
     }
 </style>
+
+@stack('styles')
 </head>
 <body>
 
@@ -56,7 +58,7 @@
           <div class="collapse" id="productSubmenu">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
               <li><a href="{{ route('slider.index') }}" class="nav-link text-white ps-4">Show Product</a></li>
-              <li><a href="#" class="nav-link text-white ps-4">Create Product</a></li>
+              <li><a href="{{ route('slider.create') }}" class="nav-link text-white ps-4">Create Product</a></li>
             </ul>
           </div>
         </li>

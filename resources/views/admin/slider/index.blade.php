@@ -31,12 +31,23 @@
                 </tr>
             </thead>
             <tbody>
+               @foreach($sliders as $slider)
                 <tr>
-                    <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
+                  {{-- @dd($slider->image) --}}
+                    <th>
+                        <img src="{{ 'storage/'. $slider->image }}" style="width: 50px; height: 50px; border-radius: 80%;" alt="">
+                    </th>
+                    <td>{{ $slider->title }}</td>
+                    <td>{{ $slider->short_desc }}</td>
+                    <td>
+                        @if($slider->status == 1)
+                            <span class="badge bg-success">Active</span>
+                        @else
+                            <span class="badge bg-secondary">Inactive</span>
+                        @endif
+                    </td>
                 </tr>
+               @endforeach
             </tbody>
         </table>
    </div>

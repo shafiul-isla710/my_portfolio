@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Models\Slider;
+use Illuminate\Support\Facades\Storage;
 
 class SliderController extends Controller
 {
@@ -12,7 +14,8 @@ class SliderController extends Controller
      */
     public function index()
     {
-        return view('admin.slider.index');
+        $data = Slider::all();
+        return view('admin.slider.index',['sliders'=>$data]);
     }
 
     /**
@@ -28,7 +31,23 @@ class SliderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'title' => 'nullable|string|max:255',
+            'short_desc' => 'nullable|string|max:255',
+        ]);
+
+        if($request->hasFile('image')){
+           $path = $request->file('image')->store('sliders','public' );
+        }
+
+        Slider::create([
+            'image' => $path,
+            'title' => $request->title,
+            'short_desc' => $request->short_desc,
+        ]);
+
+        return redirect()->route('slider.index')->with('success', 'Slider created successfully.');
     }
 
     /**
