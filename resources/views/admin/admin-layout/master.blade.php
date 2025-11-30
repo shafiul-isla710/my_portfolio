@@ -57,17 +57,17 @@
           <a href="#productSubmenu" data-bs-toggle="collapse" class="nav-link text-white">Slider</a>
           <div class="collapse" id="productSubmenu">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <li><a href="{{ route('slider.index') }}" class="nav-link text-white ps-4">Show Product</a></li>
-              <li><a href="{{ route('slider.create') }}" class="nav-link text-white ps-4">Create Product</a></li>
+              <li><a href="{{ route('slider.index') }}" class="nav-link text-white ps-4">Show Slider</a></li>
+              <li><a href="{{ route('slider.create') }}" class="nav-link text-white ps-4">Create Slider</a></li>
             </ul>
           </div>
         </li>
         <li>
-          <a href="#categorySubmenu" data-bs-toggle="collapse" class="nav-link text-white">Category</a>
+          <a href="#categorySubmenu" data-bs-toggle="collapse" class="nav-link text-white">About</a>
           <div class="collapse" id="categorySubmenu">
             <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-              <li><a href="#" class="nav-link text-white ps-4">Show Category</a></li>
-              <li><a href="#" class="nav-link text-white ps-4">Create Category</a></li>
+              <li><a href="{{ route('about.index') }}" class="nav-link text-white ps-4">Show About</a></li>
+              <li><a href="{{ route('about.create') }}" class="nav-link text-white ps-4">Create About</a></li>
             </ul>
           </div>
         </li>

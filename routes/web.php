@@ -6,6 +6,7 @@ use App\Http\Controllers\PageController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Admin\AboutController;
 use App\Http\Controllers\Admin\SliderController;
 
 /**
@@ -18,7 +19,7 @@ Route::get('/logout',[AdminController::class, 'logout'])->name('logout')->middle
 
 
 Route::get('/',[PageController::class, 'homePage'])->name('home-page');
-Route::get('/about',[PageController::class, 'aboutPage'])->name('about-page');
+Route::get('/about-page',[PageController::class, 'aboutPage'])->name('about-page');
 Route::get('/service',[PageController::class, 'servicePage'])->name('service-page');
 Route::get('/resume',[PageController::class, 'resumePage'])->name('resume-page');
 Route::get('/contact',[PageController::class, 'contactPage'])->name('contact-page');
@@ -29,7 +30,7 @@ Route::middleware(AuthMiddleware::class)->group(function (){
     Route::get('/dashboard',[DashboardController::class, 'dashboardPage'])->name('dashboard');
 
     //slider Routes
-    // Route::get('/slider/index',[SliderController::class, 'index'])->name('slider.index');
     Route::resource('/slider', SliderController::class)->names('slider');
+    Route::resource('/about', AboutController::class)->names('about');
 
 });

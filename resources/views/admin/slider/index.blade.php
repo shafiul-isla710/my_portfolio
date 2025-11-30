@@ -39,33 +39,35 @@
                 </tr>
             </thead>
             <tbody>
-               @foreach($sliders as $slider)
-                <tr>
-                  {{-- @dd($slider->image) --}}
-                    <th>
-                        <img src="{{ 'storage/'. $slider->image }}" style="width: 50px; height: 50px; border-radius: 80%;" alt="">
-                    </th>
-                    <td>{{ $slider->title }}</td>
-                    <td>{{ $slider->short_desc }}</td>
-                    <td>
-                        @if($slider->status == 1)
-                            <span class="badge bg-success">Active</span>
-                        @else
-                            <span class="badge bg-secondary">Inactive</span>
-                        @endif
-                    </td>
-                    <td>
-                        <div>
-                            <a class="btn btn-primary btn-sm" href="{{ route('slider.edit', $slider->id) }}">Edit</a>
-                            <form action="{{ route('slider.destroy', $slider->id) }}" method="POST" style="display: inline-block;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this slider?')">Delete</button>
-                            </form>
-                        </div>
-                    </td>
-                </tr>
-               @endforeach
+                @if(isset($sliders))
+                    @foreach($sliders as $slider)
+                        <tr>
+                        {{-- @dd($slider->image) --}}
+                            <th>
+                                <img src="{{ 'storage/'. $slider->image }}" style="width: 50px; height: 50px; border-radius: 80%;" alt="">
+                            </th>
+                            <td>{{ $slider->title }}</td>
+                            <td>{{ $slider->short_desc }}</td>
+                            <td>
+                                @if($slider->status == 1)
+                                    <span class="badge bg-success">Active</span>
+                                @else
+                                    <span class="badge bg-secondary">Inactive</span>
+                                @endif
+                            </td>
+                            <td>
+                                <div>
+                                    <a class="btn btn-primary btn-sm" href="{{ route('slider.edit', $slider->id) }}">Edit</a>
+                                    <form action="{{ route('slider.destroy', $slider->id) }}" method="POST" style="display: inline-block;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this slider?')">Delete</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                @endif
             </tbody>
         </table>
    </div>

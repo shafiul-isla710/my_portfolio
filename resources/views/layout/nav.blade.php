@@ -10,7 +10,7 @@
       <nav id="navmenu" class="navmenu">
         <ul>
           <li><a href="{{ url('/') }}" class="active">Home</a></li>
-          <li><a href="{{ url('/about') }}">About</a></li>
+          <li><a href="{{ url('/about-page') }}">About</a></li>
           <li><a href="{{ url('/resume') }}">Resume</a></li>
           <li><a href="{{ url('/service') }}">Services</a></li>
           <li><a >Portfolio</a></li>
