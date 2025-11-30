@@ -72,7 +72,7 @@
           </div>
         </li>
         <li>
-          <a href="#" class="nav-link text-white">Orders</a>
+          <a href="{{ route('resume-upload-page') }}" class="nav-link text-white">Upload Resume</a>
         </li>
         <li>
           <a href="#" class="nav-link text-white">Settings</a>

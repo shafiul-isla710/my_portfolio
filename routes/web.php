@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Admin\AboutController;
+use App\Http\Controllers\Admin\ResumeController;
 use App\Http\Controllers\Admin\SliderController;
 
 /**
@@ -29,8 +30,12 @@ Route::middleware(AuthMiddleware::class)->group(function (){
     //Dashboard Route
     Route::get('/dashboard',[DashboardController::class, 'dashboardPage'])->name('dashboard');
 
-    //slider Routes
+    //slider & about Routes
     Route::resource('/slider', SliderController::class)->names('slider');
     Route::resource('/about', AboutController::class)->names('about');
+
+    //Resume upload Route
+    Route::get('/resume-upload',[ResumeController::class, 'resumeUploadPage'])->name('resume-upload-page');
+    Route::post('/resume-upload',[ResumeController::class, 'resumeUpload'])->name('resume-upload');
 
 });
