@@ -58,7 +58,7 @@
 
         <div class="mb-3 col-md-6">
             <label for="long_desc" class="form-label">Long Desc</label>
-            <textarea class="form-control" name="short_desc" id="formDescription" rows="3" placeholder="Provide a detailed description">{{ isset($about) ? $about->short_desc : old('short_desc') }}</textarea>
+            <textarea class="form-control" name="long_desc" id="formDescription" rows="3" placeholder="Provide a detailed description">{{ isset($about) ? $about->long_desc : old('long_desc') }}</textarea>
             @error('short_desc')
                 <div class="text-danger">{{ $message }}</div>
             @enderror
@@ -90,15 +90,14 @@
 
         <div class="mb-3 col-md-4">
             @php
-                // $freelances = \App\Http\Models\About::freelance();
                  $freelances = \App\Models\About::freelance();
             @endphp
 
             <label for="freelance" class="form-label">Freelance</label>
-            <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+            <select class="form-select form-select-sm" name="freelance" aria-label=".form-select-sm example">
                 <option selected>Choose...</option>
                 @foreach($freelances as $freelance)
-                    <option value="{{ $freelance}}">{{ $freelance}}</option>
+                    <option value="{{ $freelance }}">{{ $freelance }}</option>
                 @endforeach
             </select>
         </div>

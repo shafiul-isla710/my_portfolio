@@ -22,8 +22,8 @@
         <div class="row justify-content-center">
           <div class="col-lg-8">
             <div class="d-flex flex-row gap-5" id="hero-btn">
-              <a href="{{ url('/about') }}" class="btn-get-started">Download Resume</a>
-              <a href="{{ url('/about') }}" class="btn-get-started">About Me</a>
+              <a href="{{ url('/') }}" class="btn-get-started">Download Resume</a>
+              <a href="{{ url('/about-page') }}" class="btn-get-started">About Me</a>
             </div>
           </div>
         </div>

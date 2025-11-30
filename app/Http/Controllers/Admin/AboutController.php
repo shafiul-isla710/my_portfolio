@@ -6,7 +6,9 @@ use App\Models\About;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\Admin\AboutStoreRequest;
+use App\Http\Requests\Admin\AboutUpdateRequest;
 
 class AboutController extends Controller
 {
@@ -49,7 +51,6 @@ class AboutController extends Controller
             Log::error('About Store Error' . $e->getMessage());
             return redirect()->back()->with('error', $e->getMessage());
         }
-
     }
 
     /**
@@ -65,15 +66,35 @@ class AboutController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $about = About::findOrFail($id);
+        return view('admin.about.edit', compact('about'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(AboutUpdateRequest $request, string $id)
     {
-        //
+        try{
+            $data = $request->validated();
+            
+            $about = About::findOrFail($id);
+            if($request->hasFile('image')){
+                
+                Storage::disk('public')->delete($about->image);
+
+                $path = $request->file('image')->store('about','public');
+                $data['image'] = $path;
+            }
+            
+            $about->update($data);
+
+            return redirect()->route('about.index')->with('success', 'About updated successfully.');
+        }
+        catch(\Exception $e){
+            Log::error('About Store Error' . $e->getMessage());
+            return redirect()->back()->with('error', $e->getMessage());
+        }
     }
 
     /**
@@ -81,6 +102,19 @@ class AboutController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try{
+            $about = About::findOrFail($id);
+
+            if($about->image){
+                Storage::disk('public')->delete($about->image);
+            }
+
+            $about->delete();
+            return redirect()->route('about.index')->with('success', 'About deleted successfully.');
+        }
+        catch(\Exception $e){
+            Log::error('About Store Error' . $e->getMessage());
+            return redirect()->back()->with('error', $e->getMessage());
+        }
     }
 }

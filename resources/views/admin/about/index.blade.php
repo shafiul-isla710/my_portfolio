@@ -8,7 +8,7 @@
             <a class="btn btn-success" href="{{ route('about.create') }}">Add About</a>
         </div>
 
-         <table class="table table-striped">
+         <table class="table table-striped text-center align-middle">
             <div>
                 @if(session('success'))
                     <div class="alert alert-success">
