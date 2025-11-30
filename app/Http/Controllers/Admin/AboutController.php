@@ -15,8 +15,8 @@ class AboutController extends Controller
      */
     public function index()
     {
-        $about = About::first();
-        return view('admin.about.index',['abouts'=>$about]);
+        $abouts = About::all();
+        return view('admin.about.index',['abouts'=>$abouts]);
     }
 
     /**
