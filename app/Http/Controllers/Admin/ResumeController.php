@@ -20,10 +20,10 @@ class ResumeController extends Controller
             $request->validate([
                 'resume' => 'required|mimes:pdf',
             ]);
-            
-            $path = $request->file('resume')->store('resumes','public');
-            // dd($path);
 
+            
+            $path = $request->file('resume')->store('resumes','public' );
+            
             Resume::create([
                 'resume' => $path,
             ]);
@@ -33,7 +33,5 @@ class ResumeController extends Controller
             Log::error('Resume Upload Error' . $e->getMessage());
             return redirect()->back()->with('error', $e->getMessage());
        }
-        
-        
     }
 }

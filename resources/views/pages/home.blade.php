@@ -1,17 +1,21 @@
 @extends('layout.app')
 
 @push('style')
-
-<style>
-  #hero-btn{
-    margin-top: 150px;
-  }
-</style>
-
+  <style>
+    #hero-btn{
+      margin-top: 150px;
+    }
+  </style>
 @endpush
 
+@push('script')
+  
+@endpush
 
 @section('content')
+@php 
+  $pdf = App\Models\Resume::first();
+@endphp
 
 <!-- Hero Section -->
     <section id="hero" class="hero section">
@@ -22,7 +26,11 @@
         <div class="row justify-content-center">
           <div class="col-lg-8">
             <div class="d-flex flex-row gap-5" id="hero-btn">
-              <a href="{{ url('/') }}" class="btn-get-started">Download Resume</a>
+              <form action="{{ route('resume-download', $pdf->id) }}" method="POST">
+                @csrf
+                <button type="submit" class="btn-get-started" href="">Download Resume</button>
+              </form>
+              <p class="d-none">My Name is Shafi</p>
               <a href="{{ url('/about-page') }}" class="btn-get-started">About Me</a>
             </div>
           </div>

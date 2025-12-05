@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\About;
+use App\Models\Resume;
 use App\Models\Slider;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PageController extends Controller
 {
@@ -37,5 +39,21 @@ class PageController extends Controller
     public function contactPage()
     {
         return view('pages.contact');
+    } 
+
+    public function resumeDownload($file)
+    {
+        $resume = Resume::findOrFail($file);
+        
+
+        $filePath ='storage/'.$resume->resume;
+
+        if(file_exists($filePath)){
+            return response()->download($filePath);
+        }
+        else{
+            abort(404);
+        }
+
     }
 }

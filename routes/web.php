@@ -25,6 +25,8 @@ Route::get('/service',[PageController::class, 'servicePage'])->name('service-pag
 Route::get('/resume',[PageController::class, 'resumePage'])->name('resume-page');
 Route::get('/contact',[PageController::class, 'contactPage'])->name('contact-page');
 
+Route::post('/resume-download/{file}',[PageController::class, 'resumeDownload'])->name('resume-download');
+
 
 Route::middleware(AuthMiddleware::class)->group(function (){
     //Dashboard Route
