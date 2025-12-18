@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\AuthMiddleware;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Admin\AboutController;
@@ -24,6 +25,9 @@ Route::get('/about-page',[PageController::class, 'aboutPage'])->name('about-page
 Route::get('/service',[PageController::class, 'servicePage'])->name('service-page');
 Route::get('/resume',[PageController::class, 'resumePage'])->name('resume-page');
 Route::get('/contact',[PageController::class, 'contactPage'])->name('contact-page');
+
+Route::post('/send-message',[ContactController::class, 'sendMessage'])->name('sendMessage');
+
 
 Route::post('/resume-download/{file}',[PageController::class, 'resumeDownload'])->name('resume-download');
 
