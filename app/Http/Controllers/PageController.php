@@ -38,7 +38,8 @@ class PageController extends Controller
     //contact page
     public function contactPage()
     {
-        return view('pages.contact');
+        $about = About::first();
+        return view('pages.contact', compact('about'));
     } 
 
     public function resumeDownload($file)
