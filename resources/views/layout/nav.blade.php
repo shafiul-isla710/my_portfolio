@@ -19,9 +19,9 @@
       </nav>
 
       <div class="header-social-links">
-        <a href="#" class="github"><i class="bi bi-github"></i></a>
-        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href="https://github.com/shafiul-isla710" class="github"><i class="bi bi-github"></i></a>
+        <a href="https://www.facebook.com/shafi.ul.93743" class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href="https://www.linkedin.com/in/shafi-ul-1a291834b/" class="linkedin"><i class="bi bi-linkedin"></i></a>
       </div>
 
     </div>
